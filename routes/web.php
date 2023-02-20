@@ -18,11 +18,11 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'dashboard'], function() {
-    Route::resource('/websites', 'WebsitesController');
-    Route::resource('/categories', 'CategoriesController');
-    Route::resource('/links', 'LinksController');
-    Route::resource('/item-schema', 'ItemSchemaController');
-    Route::resource('/articles', 'ArticlesController');
+    Route::resource('/websites', 'App\Http\Controllers\WebsitesController');
+    Route::resource('/categories', 'App\Http\Controllers\CategoriesController');
+    Route::resource('/links', 'App\Http\Controllers\LinksController');
+    Route::resource('/item-schema', 'App\Http\Controllers\ItemSchemaController');
+    Route::resource('/movies', 'App\Http\Controllers\MoviesController');
 });
 
 Route::get('/dashboard', function () {

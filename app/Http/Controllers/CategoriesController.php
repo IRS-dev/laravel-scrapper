@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,13 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::all();
+
+        return view('dashboard.category.index',[
+            'cats' =>$cats
+        ]
+        
+    );
     }
 
     /**
@@ -23,7 +30,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.category.create');
     }
 
     /**
@@ -34,7 +41,17 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $cat = new Category;
+
+        $cat->title = $request->input('title');
+
+        $cat->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -54,9 +71,12 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($category)
     {
-        //
+        $cat =Category::find($category);
+        return view('dashboard.category.edit',[
+            'cat' =>$cat
+        ]);
     }
 
     /**
@@ -68,7 +88,17 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $cat = Category::find($id);
+
+        $cat->title = $request->input('title');
+
+        $cat->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -79,6 +109,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
     }
 }
