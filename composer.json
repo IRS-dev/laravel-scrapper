@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "fabpot/goutte": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/breeze": "*",
@@ -14,7 +15,10 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "mews/captcha": "^3.2",
-        "weidner/goutte": "^2.2"
+        "symfony/browser-kit": "^6.2",
+        "symfony/css-selector": "^6.2",
+        "symfony/dom-crawler": "^6.2",
+        "symfony/http-client": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

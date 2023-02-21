@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9082741009e52f13a0c61939056051ad",
+    "content-hash": "dda8b1e8b6628843d30c812f2fe5a6b8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4045,21 +4045,20 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.4.19",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "f4a7d150f5b9e8f974f6f127d8167e420d11fc62"
+                "reference": "bf1b9d4ad8b1cf0dbde8b08e0135a2f6259b9ba1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/f4a7d150f5b9e8f974f6f127d8167e420d11fc62",
-                "reference": "f4a7d150f5b9e8f974f6f127d8167e420d11fc62",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/bf1b9d4ad8b1cf0dbde8b08e0135a2f6259b9ba1",
+                "reference": "bf1b9d4ad8b1cf0dbde8b08e0135a2f6259b9ba1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-php80": "^1.16"
+                "php": ">=8.1"
             },
             "type": "library",
             "autoload": {
@@ -4091,7 +4090,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v5.4.19"
+                "source": "https://github.com/symfony/css-selector/tree/v6.2.5"
             },
             "funding": [
                 {
@@ -4107,7 +4106,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-01T08:32:19+00:00"
+            "time": "2023-01-01T08:38:09+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -6652,71 +6651,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "weidner/goutte",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dweidner/laravel-goutte.git",
-                "reference": "85826c3c79457bc26f4839f5deca2b1fe3e07ab7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dweidner/laravel-goutte/zipball/85826c3c79457bc26f4839f5deca2b1fe3e07ab7",
-                "reference": "85826c3c79457bc26f4839f5deca2b1fe3e07ab7",
-                "shasum": ""
-            },
-            "require": {
-                "fabpot/goutte": "^4.0",
-                "illuminate/support": "^8|^9",
-                "php": ">=7.3"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Weidner\\Goutte\\GoutteServiceProvider"
-                    ],
-                    "aliases": {
-                        "Goutte": "Weidner\\Goutte\\GoutteFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Weidner\\Goutte\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Weidner",
-                    "email": "hallo@danielweidner.de",
-                    "homepage": "https://danielweidner.de"
-                }
-            ],
-            "description": "Laravel Facade for Goutte, a simple PHP Web Scraper",
-            "homepage": "https://github.com/dweidner/laravel-goutte",
-            "keywords": [
-                "goutte",
-                "laravel",
-                "weidner"
-            ],
-            "support": {
-                "issues": "https://github.com/dweidner/laravel-goutte/issues",
-                "source": "https://github.com/dweidner/laravel-goutte/tree/2.2.0"
-            },
-            "time": "2022-05-25T14:08:10+00:00"
         }
     ],
     "packages-dev": [

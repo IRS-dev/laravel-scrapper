@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class WebsitesController extends Controller
@@ -13,7 +14,11 @@ class WebsitesController extends Controller
      */
     public function index()
     {
-        //
+        $websites = Website::all();
+
+        return view('dashboard.website.index',[
+            'websites'=>$websites
+        ]);
     }
 
     /**
@@ -23,7 +28,7 @@ class WebsitesController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.website.create');
     }
 
     /**
@@ -34,7 +39,23 @@ class WebsitesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'url' => 'required',
+            'logo' => 'required'
+        ]);
+
+        $website = new Website;
+
+        $website->title = $request->input('title');
+
+        $website->url = $request->input('url');
+
+        $website->logo = $this->uploadFile('logo', public_path('uploads/'), $request)["filename"];
+
+        $website->save();
+
+        return redirect()->route('websites.index');
     }
 
     /**
@@ -56,7 +77,10 @@ class WebsitesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $website = Website::find($id);
+        return view('dashboard.website.edit',[
+            'website' => $website
+        ]);
     }
 
     /**
@@ -68,7 +92,25 @@ class WebsitesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'url' => 'required'
+        ]);
+
+        $website = Website::find($id);
+
+        $website->title = $request->input('title');
+
+        $website->url = $request->input('url');
+
+        if($request->file('logo') != null) {
+
+            $website->logo = $this->uploadFile('logo', public_path('uploads/'), $request)["filename"];
+        }
+
+        $website->save();
+
+        return redirect()->route('websites.index');
     }
 
     /**

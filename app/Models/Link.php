@@ -13,15 +13,15 @@ class Link extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Models\Category','category_id');
     }
 
     public function website()
     {
-        return $this->belongsTo('App\Website','website_id');
+        return $this->belongsTo('App\Models\Website','website_id');
     }
     public function itemSchema()
     {
-        return $this->belongsTo('App\ItemSchema','item_schema_id');
+        return $this->belongsTo('App\Models\ItemSchema','item_schema_id');
     }
 }

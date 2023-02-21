@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\ItemSchema;
+use App\Lib\Scraper;
+use App\Models\Link;
+use App\Models\Website;
 use Illuminate\Http\Request;
+use Goutte\Client;
 
 class LinksController extends Controller
 {
@@ -13,7 +19,14 @@ class LinksController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::orderBy('id', 'DESC')->paginate(10);
+
+        $itemSchemas = ItemSchema::all();
+
+        return view('dashboard.link.index',[
+        'links' => $links,
+        'itemSchemas' => $itemSchemas
+        ]);
     }
 
     /**
@@ -23,7 +36,13 @@ class LinksController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $websites = Website::all();
+
+        return view('dashboard.link.create',[
+            'categories' => $categories,
+            'websites' => $websites
+        ]);
     }
 
     /**
@@ -34,7 +53,26 @@ class LinksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'url' => 'required',
+            'main_filter_selector' => 'required',
+            'website_id' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $link = new Link;
+
+        $link->url = $request->input('url');
+
+        $link->main_filter_selector = $request->input('main_filter_selector');
+
+        $link->website_id = $request->input('website_id');
+
+        $link->category_id = $request->input('category_id');
+
+        $link->save();
+
+        return redirect()->route('links.index');
     }
 
     /**
@@ -56,7 +94,15 @@ class LinksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $websites = Website::all();
+        $link =Link::find($id);
+
+        return view('dashboard.link.edit',[
+            'categories' => $categories,
+            'websites' => $websites,
+            'link' => $link
+        ]);
     }
 
     /**
@@ -68,7 +114,26 @@ class LinksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'url' => 'required',
+            'main_filter_selector' => 'required',
+            'website_id' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $link = Link::find($id);
+
+        $link->url = $request->input('url');
+
+        $link->main_filter_selector = $request->input('main_filter_selector');
+
+        $link->website_id = $request->input('website_id');
+
+        $link->category_id = $request->input('category_id');
+
+        $link->save();
+
+        return redirect()->route('links.index');
     }
 
     /**
@@ -80,5 +145,51 @@ class LinksController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * @param Request $request
+     */
+    public function setItemSchema(Request $request)
+    {
+        if(!$request->item_schema_id && !$request->link_id)
+            return;
+
+        $link = Link::find($request->link_id);
+
+        $link->item_schema_id = $request->item_schema_id;
+
+        $link->save();
+
+        return response()->json(['msg' => 'Link updated!']);
+    }
+
+
+    /**
+     * scrape specific link
+     *
+     * @param Request $request
+     */
+    public function scrape(Request $request)
+    {
+        if(!$request->link_id)
+            return;
+
+        $link = Link::find($request->link_id);
+
+        if(empty($link->main_filter_selector) && (empty($link->item_schema_id) || $link->item_schema_id == 0)) {
+            return;
+        }
+
+        $scraper = new Scraper(new Client());
+
+        $scraper->handle($link);
+
+        if($scraper->status == 1) {
+            return response()->json(['status' => 1, 'msg' => 'Scraping done']);
+        } else {
+            return response()->json(['status' => 2, 'msg' => $scraper->status]);
+        }
     }
 }

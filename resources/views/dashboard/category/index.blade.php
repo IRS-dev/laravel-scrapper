@@ -11,14 +11,14 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>Title</td>
-                        <td>Actions</td>
+                        {{-- <td>Actions</td> --}}
                     </tr>
                     @foreach($cats as $cat)
                         <tr>
                             <td>{{ $cat->title }}</td>
-                            <td>
+                            {{-- <td>
                                 <a href="dashboard/categories/{{ $cat->id }}/edit"><i class="glyphicon glyphicon-edit"></i> </a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </table>

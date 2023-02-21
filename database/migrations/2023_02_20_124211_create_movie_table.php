@@ -17,12 +17,12 @@ class CreateMovieTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('genre');
-            $table->integer('duration')->nullable();
+            $table->string('duration')->nullable(); //integer
             $table->string('actor')->nullable()->default('-');
             $table->string('synopsis')->nullable()->default('-');
             $table->string('poster')->nullable()->default('-');
             $table->string('trailer')->nullable()->default('-');
-            $table->integer('rating')->nullable();
+            $table->string('rating')->nullable();//integer
             $table->string('review')->nullable()->default('Belum ada review');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('website_id')->nullable();

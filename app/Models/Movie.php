@@ -13,11 +13,11 @@ class Movie extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Models\Category','category_id');
     }
 
     public function website()
     {
-        return $this->belongsTo('App\Website','website_id');
+        return $this->belongsTo('App\Models\Website','website_id');
     }
 }
