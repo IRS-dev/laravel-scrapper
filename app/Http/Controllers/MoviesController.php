@@ -94,28 +94,23 @@ class MoviesController extends Controller
         $movie = Movie::findOrFail($id);
         $rules =([
             'title' => 'required|max:255',
-            'image'=>'image|file|max:2048',
-            'category_id' => 'required',
-            'body' => 'required'
+            'genre' => 'required|max:255',
+            'actor' => 'required|max:255',
+            'trailer' => 'required|max:255',
+            'synopsis' => 'required'
         ]);
 
-        
-        
-        if($request->slug != $post->slug){
-            $rules['slug'] = 'required|unique:posts';
-        }
         $validatedData = $request->validate($rules);
-        if($request->file('image')){
-            if($request->oldImage){
-                Storage::delete($request->oldImage);
-            }
-            $validatedData['image'] = $request->file('image')->store('post-images');
-        }
-        $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body),200);
+        // if($request->file('image')){
+        //     if($request->oldImage){
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $validatedData['image'] = $request->file('image')->store('post-images');
+        // }
 
-        Post::where('id',$post->id)->update($validatedData);
-        return redirect('/dashboard/posts')->with('success','Post has been updated');
+
+        Movie::where('id',$movie->id)->update($validatedData);
+        return redirect('/dashboard/movies')->with('success','movie has been updated');
     }
 
     /**
