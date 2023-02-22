@@ -35,7 +35,7 @@
                             <td>
                                 <a href="/dashboard/movies/{{ $movie->id }}" class="badge btn-info">Detail</a>
                                 <a href="/dashboard/movies/{{ $movie->id }}/edit" class="badge btn-warning">Edit</a>
-                                <form action="/dashboard/movies/{{ $movie->id }}" method="movie" class="d-inline">
+                                <form action="/dashboard/movies/{{ $movie->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge btn-danger border-0" onclick="return confirm('Are you sure delete this movie?')">Delete</button>
