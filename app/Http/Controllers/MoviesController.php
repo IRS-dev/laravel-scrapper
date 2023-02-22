@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use App\Exports\MovieExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MoviesController extends Controller
 {
@@ -123,5 +125,17 @@ class MoviesController extends Controller
     {
         Movie::destroy($id);
         return redirect('/dashboard/movies')->with('success','movie had been deleted');
+    }
+
+    public function export_excel()
+	{
+		return Excel::download(new MovieExport, 'movie.xlsx');
+	}
+
+    public function import()
+    {
+        Excel::import(new MovieExport, 'movie.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
     }
 }

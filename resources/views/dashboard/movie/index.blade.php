@@ -13,8 +13,8 @@
                 @endif
                 <div class="col-6 lg-6">
                     <a  class=" btn-success btn-rounded" href="/dashboard/movies/create">Create New movie</a>
-                    <a  class=" btn-info btn-rounded" href="/dashboard/movies/create">Export Movie</a>
-                    <a  class=" btn-primary btn-rounded" href="/dashboard/movies/create">Import Movie</a>
+                    <a  class=" btn-info btn-rounded" href="/dashboard/movies/export_excel" target="_blank">Export Movie</a>
+                    <a  class=" btn-primary btn-rounded" href="/dashboard/movies/import" target ="_blank">Import Movie</a>
                 </div>
                     <table class="table mt-3">
                       <thead>

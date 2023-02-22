@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/dashboard/movies/export_excel', 'App\Http\Controllers\MoviesController@export_excel');
+Route::get('/dashboard/movies/import', 'App\Http\Controllers\MoviesController@import');
 
 Route::group(['prefix' => 'dashboard'], function() {
     Route::resource('/websites', 'App\Http\Controllers\WebsitesController');
