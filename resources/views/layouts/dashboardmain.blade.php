@@ -60,19 +60,19 @@
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="/">
                         <!-- Logo icon -->
-                       
+
                         <!--End Logo icon -->
                          <!-- Logo text -->
                         <b class="logo-text ">
                             Scraper
-                            
+
                         </b>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!-- <img src="assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-                            
+
                         <!-- </b> -->
                         <!--End Logo icon -->
                     </a>
@@ -99,7 +99,7 @@
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-right">
-                        
+
                         <!-- ============================================================== -->
                         <!-- End Messages -->
                         <!-- ============================================================== -->
@@ -110,21 +110,21 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">..</a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                               
-                                
-                               
-                                
+
+
+
+
                                 <div class="dropdown-divider"></div>
 
-                                
+
                                 <form action="/logout" method="POST">
                                     @csrf
                                    <div >
                                      <button class="dropdown-item" type="submit"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</button>
                                     </div>
                                     </form>
-                                
-                                
+
+
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -146,7 +146,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }} "> <a class="sidebar-link waves-effect waves-dark sidebar-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        {{-- <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }} "> <a class="sidebar-link waves-effect waves-dark sidebar-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li> --}}
                         <li class="sidebar-item {{ Request::is('dashboard/movies*') ? 'active' : '' }}"> <a class=" {{ Request::is('dashboard/movies*') ? 'active' : '' }} sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard/movies" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Movies</span></a></li>
                         <li class="sidebar-item {{ Request::is('dashboard/websites*') ? 'active' : '' }}"> <a class=" {{ Request::is('dashboard/websites*') ? 'active' : '' }} sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard/websites" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Website</span></a></li>
                         <li class="sidebar-item {{ Request::is('dashboard/categories*') ? 'active' : '' }}"> <a class=" {{ Request::is('dashboard/categories*') ? 'active' : '' }} sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard/categories" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Categories</span></a></li>
@@ -186,7 +186,7 @@
 
 @yield('containerfluid')
 
-      
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
