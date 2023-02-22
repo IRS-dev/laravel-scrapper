@@ -24,18 +24,18 @@ class CreateMovieTable extends Migration
             $table->string('trailer')->nullable()->default('-');
             $table->string('rating')->nullable();//integer
             $table->string('review')->nullable()->default('Belum ada review');
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('website_id')->nullable();
-            $table->foreign('category_id')
-            ->references('id')
-            ->on('category')
-            ->onUpdate('cascade')
-            ->onDelete('set null');
-             $table->foreign('website_id')
-            ->references('id')
-            ->on('website')
-            ->onUpdate('cascade')
-            ->onDelete('set null');
+            // $table->unsignedBigInteger('category_id')->nullable();
+            // $table->unsignedBigInteger('website_id')->nullable();
+            // $table->foreign('category_id')
+            // ->references('id')
+            // ->on('category')
+            // ->onUpdate('cascade')
+            // ->onDelete('set null');
+            //  $table->foreign('website_id')
+            // ->references('id')
+            // ->on('website')
+            // ->onUpdate('cascade')
+            // ->onDelete('set null');
             $table->timestamps();
         });
     }

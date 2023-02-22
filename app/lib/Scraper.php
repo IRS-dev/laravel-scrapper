@@ -14,7 +14,7 @@ use Goutte\Client as GoutteClient;
  * on the filter function we iterate and save the results
  * into the Movie table
  *
- * @package App\Lib
+ * @package 
  */
 class Scraper
 {
