@@ -19,9 +19,9 @@
                     <table class="table mt-3">
                       <thead>
                         <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Logo</th>
                           <th scope="col">Url</th>
+                          <th scope="col">Main Filter Selector</th>
+                          <th scope="col">Website</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>

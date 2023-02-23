@@ -1,79 +1,66 @@
-@extends('layout')
-
-@section('content')
-
+@extends('layouts.dashboardmain')
+@section('containerfluid')
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Add Website</h2>
-
-            @if(session('error')!='')
-                <div class="alert alert-danger">
-                    {{ session('error') }}
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title m-b-0">Create New Movie</h5>
                 </div>
-            @endif
+                <div class="card">
+                    <form class="form-horizontal" method="post" action="/dashboard/websites" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            {{-- Title --}}
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-3 text-right control-label col-form-label">Title</label>
+                                <div class="col-sm-9">
+                                    <input required value="{{ old('title') }}" name="title" autofocus type="text" class="form-control  @error('title') is-invalid @enderror" id="title" placeholder="Title Here">
+                                    @error('title')
+                                    <div>
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- url --}}
+                            <div class="form-group row">
+                                <label for="url" class="col-sm-3 text-right control-label col-form-label">url</label>
+                                <div class="col-sm-9">
+                                    <input required value="{{ old('url') }}" name="url" autofocus type="text" class="form-control  @error('url') is-invalid @enderror" id="url" placeholder="url Here">
+                                    @error('url')
+                                    <div>
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- FILE input --}}
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label form-label" for="formFile">Logo</label>
+                                <div class="mb-2 col-sm-9">
 
-            @if (count($errors) > 0)
-
-                <div class="alert alert-danger">
-
-                    <ul>
-
-                        @foreach ($errors->all() as $error)
-
-                            <li>{{ $error }}</li>
-
-                        @endforeach
-
-                    </ul>
-
-                </div>
-
-            @endif
-
-            <form method="post" action="{{ route('websites.store') }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Title:</strong>
-
-                            <input type="text" name="title" class="form-control" />
+                                    <input class="form-control" type="file" id="formFile" name="logo" onchange="previewImage()">
+                                    <img src="" class="img-preview img-fluid">
+                                    @error('logo')
+                                    <div>
+                                        <span class="text-danger">{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                          
+                            {{-- button --}}
+                            <div class="card-body">
+                                <button  type="submit" class="btn btn-primary">create</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Url:</strong>
-
-                            <input type="text" name="url" class="form-control" />
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Logo:</strong>
-
-                            <input type="file" name="logo" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                    <button type="submit" class="btn btn-primary" id="btn-save">Create</button>
-
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
+</div>
+
 
 @endsection

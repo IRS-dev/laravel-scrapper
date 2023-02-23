@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        // DB::table('users')->insert([
-        //     'name' => 'admin123',
-        //     'email' => 'admin123@gmail.com',
-        //     'password' => Hash::make('admin123'),
-        // ]);
+        DB::table('users')->insert([
+            'name' => 'admin123',
+            'email' => 'admin123@gmail.com',
+            'password' => Hash::make('admin123'),
+        ]);
 
         DB::table('movie')->insert([
             'title' => 'required|max:255',
