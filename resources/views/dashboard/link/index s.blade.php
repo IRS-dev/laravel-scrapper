@@ -1,37 +1,30 @@
-@extends('layouts.dashboardmain')
-@section('containerfluid')
- <!-- Container fluid -->
- <div class="container-fluid">
-     <div class="row">
-         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title m-b-0">Link</h5>
-                </div>
-                @if(session()->has('success'))
-                <div class="alert alert-success col-6 lg-6" role="alert">{{ session('success') }}</div>
-                @endif
-                <div class="col-6 lg-6">
-                    <a  class=" btn-success btn-rounded" href="/dashboard/links/create">Create New Links</a>
-                    <!-- <a  class=" btn-info btn-rounded" href="/dashboard/movies/export_excel" target="_blank">Export Movie</a>
-                    <a  class=" btn-primary btn-rounded" href="/dashboard/movies/import" target ="_blank">Import Movie</a> -->
-                </div>
-                    <table class="table mt-3">
-                      <thead>
-                        <tr>
-                          <th scope="col">Url</th>
-                          <th scope="col">Main Filter Selector</th>
-                          <th scope="col">Website</th>
-                          <th scope="col">Action</th>
-                          <th scope="col">Assigned To Category</th>
-                        <th scope="col">Item Schema</th>
-                        <th scope="col">Scrape Link</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          @foreach($links as $link)
-                          <tr>
-                          <td>{{ $link->url }}</td>
+@extends('layout')
+
+@section('content')
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Links</h2>
+
+            <div class="alert alert-success" style="display: none"></div>
+
+            <a href="{{ route('links.create') }}" class="btn btn-warning pull-right">Add new</a>
+
+            @if(count($links) > 0)
+
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Url</td>
+                        <td>Main Filter Selector</td>
+                        <td>Website</td>
+                        <td>Assigned To Category</td>
+                        <td><strong>Item Schema</strong></td>
+                        <td><strong>Scrape Link</strong></td>
+                        <td>Actions</td>
+                    </tr>
+                    @foreach($links as $link)
+                        <tr data-id="{{ $link->id }}">
+                            <td>{{ $link->url }}</td>
                             <td>{{ $link->main_filter_selector }}</td>
                             <td>{{ $link->website->title }} </td>
                             <td><strong><span class="label label-info">{{ $link->category->title }}</span></strong> </td>
@@ -54,15 +47,25 @@
                             <td>
                                 <a href="{{ url('dashboard/links/' . $link->id . '/edit') }}"><i class="glyphicon glyphicon-edit"></i> </a>
                             </td>
-                          </tr>
-                          @endforeach
-                      </tbody>
+                        </tr>
+                    @endforeach
                 </table>
-            </div>
-         </div>
-     </div>
-</div>
+
+                @if(count($links) > 0)
+                    <div class="pagination">
+                        <?php echo $links->render();  ?>
+                    </div>
+                @endif
+
+            @else
+                <i>No links found</i>
+
+            @endif
+        </div>
+    </div>
+
 @endsection
+
 @section('script')
     <script>
         $(function () {
